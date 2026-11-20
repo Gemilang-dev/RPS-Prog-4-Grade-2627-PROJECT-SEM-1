@@ -1,8 +1,12 @@
 # Project 1: Smart Transit Ticket & Turnstile Gate Controller
 
 **Target Audience:** High School Computer Science Students (Solo or Pairs)  
+**Submission Deadline:** **December 20**  
 **Estimated Time:** 3–6 hours  
 **Architecture:** 8 Modular C++ Files (Virtual CPU, FIFO Queue, LIFO Stack)
+
+> [!IMPORTANT]
+> **Due Date:** Complete and push all code by **December 20**. Make sure you work on your own **Fork** of the main repository!
 
 ---
 

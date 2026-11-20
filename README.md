@@ -2,6 +2,21 @@
 
 Welcome to the comprehensive, GitHub-ready **C++ Systems Programming & Assembly Projects Curriculum** designed specifically for high school computer science students!
 
+> [!IMPORTANT]
+> ### ⏰ Final Project Submission Deadline: **December 20**
+> All project implementations, code comments, and automated test suite verifications must be completed and pushed to your GitHub repository by **December 20**.
+
+> [!TIP]
+> ### 🍴 Mandatory Student Workflow: Fork This Repository First!
+> **DO NOT** attempt to clone and push directly to this central repository!
+> 1. Click the **"Fork"** button in the top-right corner of this GitHub page to create your own copy under your personal GitHub account.
+> 2. Clone your **forked** repository to your local computer:
+>    ```bash
+>    git clone https://github.com/<your-github-username>/RPS-Prog-4-Grade-2627-PROJECT-SEM-1.git
+>    ```
+> 3. Open your cloned project in **CLion** or VSCode.
+> 4. Collaborate in pairs or individually, commit your work frequently, and push your commits to your fork on GitHub before the **December 20** deadline.
+
 This curriculum demystifies how computer hardware, operating systems, compilers, and low-level data structures operate under the hood. Every lesson breaks down advanced engineering concepts using **intuitive real-world analogies that even an elementary school student can immediately grasp**, paired with real C++ code you can run and modify yourself.
 
 ---
