@@ -132,9 +132,3 @@ make all
 
 ---
 
-## 👨‍🏫 Note for Teachers & Instructors
-Complete working reference solutions, grading rubrics, and line-by-line scoring guidelines are confidential and preserved in the `teacher/` directory:
-- [teacher/projects/project1_grading_rubric.md](file:///home/ray/Downloads/c++-systems-curriculum-&-high-school-asssajkembly-projects/teacher/projects/project1_grading_rubric.md)
-- [teacher/projects/project2_grading_rubric.md](file:///home/ray/Downloads/c++-systems-curriculum-&-high-school-asssajkembly-projects/teacher/projects/project2_grading_rubric.md)
-- [teacher/projects/project3_grading_rubric.md](file:///home/ray/Downloads/c++-systems-curriculum-&-high-school-asssajkembly-projects/teacher/projects/project3_grading_rubric.md)
-- [teacher/solutions/](file:///home/ray/Downloads/c++-systems-curriculum-&-high-school-asssajkembly-projects/teacher/solutions/)
