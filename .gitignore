@@ -1,0 +1,61 @@
+# Compiled Object and Library Files
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+example
+transit_gate
+warehouse_robot
+warehouse_dispatcher
+hospital_triage
+triage_monitor
+test_suite
+transit_test
+robot_test
+triage_test
+app
+hello
+calculator
+comment_demo
+
+# Build Directories & CMake Cache
+build/
+bin/
+dist/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.cmake
+cmake-build-*/
+.cmake/
+
+# IDE & Editor Specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Test & Coverage Artifacts
+coverage/
+*.gcda
+*.gcno
+*.gcov
+
+# Logs and environment
+*.log
+.env*
+!.env.example
+
+# Teacher materials and confidential answer keys (Excluded from student repository)
+teacher/

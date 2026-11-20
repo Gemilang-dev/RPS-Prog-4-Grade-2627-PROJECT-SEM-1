@@ -1,0 +1,14 @@
+{
+  "studentName": "Alex Morgan",
+  "studentId": "CS-HS-01",
+  "compileCmd": "g++ main.cpp -Wall -o app",
+  "runCmd": "./app",
+  "warningFlag": "-Wall -Wextra",
+  "stdFlag": "-std=c++17",
+  "commentDifference": "// is for single-line comments ending at newline. /* and */ enclose multi-line block comments.",
+  "nestedComments": "Block comments cannot be nested because the first closing delimiter */ terminates the entire comment block, causing a syntax error on the subsequent */.",
+  "preprocessorRole": "Comments are stripped out by the preprocessor during stage 1 and replaced by a single whitespace character. They do not increase executable binary size.",
+  "chainedCmd": "g++ main.cpp -Wall -std=c++17 -o app && ./app",
+  "docCommentExample": "/**\n * @brief Computes square of a number.\n * @param n Input integer.\n * @return Product of n * n.\n */",
+  "submittedAt": "2026-10-25T10:00:00Z"
+}

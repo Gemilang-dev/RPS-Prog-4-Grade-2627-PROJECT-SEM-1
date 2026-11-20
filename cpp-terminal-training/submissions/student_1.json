@@ -1,0 +1,14 @@
+{
+  "studentName": "Sarah Jenkins",
+  "studentId": "CS-10-02",
+  "compileCmd": "g++ program.cpp -Wall -std=c++17 -o app",
+  "runCmd": "./app",
+  "warningFlag": "-Wall -Wextra",
+  "stdFlag": "-std=c++17",
+  "commentDifference": "// is for single-line comments; /* ... */ is for multi-line block comments.",
+  "nestedComments": "Cannot be nested because the first closing delimiter */ immediately ends the block comment, causing a syntax error.",
+  "preprocessorRole": "Comments are stripped and deleted by the preprocessor during the first phase and do not exist in the binary file.",
+  "chainedCmd": "g++ program.cpp -Wall -std=c++17 -o app && ./app",
+  "docCommentExample": "/**\n * @brief Calculates the sum of two integers.\n * @param a First value.\n * @param b Second value.\n * @return Sum of a and b.\n */",
+  "submittedAt": "2026-10-25T10:15:00Z"
+}

@@ -1,0 +1,14 @@
+{
+  "studentName": "Brian Miller",
+  "studentId": "CS-10-03",
+  "compileCmd": "g++ program.cpp -Wall -o app",
+  "runCmd": "./app",
+  "warningFlag": "-Wall",
+  "stdFlag": "-std=c++17",
+  "commentDifference": "Two forward slashes // for one line, and /* */ for multiple lines.",
+  "nestedComments": "No, it causes a compiler syntax error if nested.",
+  "preprocessorRole": "Deleted during preprocessing before compilation, so executable size is not affected.",
+  "chainedCmd": "g++ program.cpp -Wall -o app && ./app",
+  "docCommentExample": "/**\n * @brief Prints greeting message.\n */",
+  "submittedAt": "2026-10-25T10:20:00Z"
+}

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Paced Practice: C++ Terminal Commands & Anatomy of Comments</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --code-bg: #090d16;
+      --code-border: #1e293b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    h1 {
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .notice-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #e2e8f0;
+    }
+    .student-info {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .student-info { grid-template-columns: 1fr; }
+    }
+    .form-group {
+      margin-bottom: 8px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    .question-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s ease;
+    }
+    .question-card:focus-within {
+      border-color: var(--primary);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .question-number {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .question-tag {
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #334155;
+      color: #cbd5e1;
+    }
+    .question-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: #f8fafc;
+      margin-bottom: 14px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      color: #38bdf8;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 85px;
+      line-height: 1.5;
+    }
+    input[type="text"]:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+    .hint-toggle {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 10px;
+      text-decoration: underline;
+    }
+    .hint-toggle:hover {
+      color: var(--primary);
+    }
+    .hint-content {
+      display: none;
+      background: #090d16;
+      border-left: 3px solid var(--warning);
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #e2e8f0;
+    }
+    .feedback-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      border: 1px solid transparent;
+    }
+    .feedback-box.understood {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #a7f3d0;
+    }
+    .feedback-box.needs-practice {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #fde68a;
+    }
+    .actions-bar {
+      position: sticky;
+      bottom: 16px;
+      background: #1e293b;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      z-index: 50;
+    }
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #0f172a;
+    }
+    .btn-primary:hover {
+      background: #7dd3fc;
+    }
+    .btn-secondary {
+      background: #334155;
+      color: #fff;
+      border-color: #475569;
+    }
+    .btn-secondary:hover {
+      background: #475569;
+    }
+    .btn-success {
+      background: var(--accent);
+      color: #0f172a;
+    }
+    .btn-success:hover {
+      background: #34d399;
+    }
+    #evalReport {
+      display: none;
+      background: #1e293b;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .report-header {
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+    }
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .pill {
+      background: #090d16;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <span class="badge">🌱 Self-Paced Practice & Concepts Check</span>
+    <h1>C++ Practice Form: Terminal & Comments</h1>
+    <p class="subtitle">Validate your grasp of g++ compilation commands, binary execution, flags, and C++ comment mechanics.</p>
+    <div class="notice-box">
+      <strong>Stress-Free Learning (No Grades):</strong> This exercise is not a scored or graded test. It is a self-assessment tool to build your confidence before compiling and debugging systems code independently in the terminal.
+    </div>
+  </header>
+
+  <div class="student-info">
+    <div class="form-group">
+      <label for="studentName">Student Full Name</label>
+      <input type="text" id="studentName" placeholder="e.g. Alex Morgan" value="Self-Learner">
+    </div>
+    <div class="form-group">
+      <label for="studentId">Class / Student ID</label>
+      <input type="text" id="studentId" placeholder="e.g. CS-HS-01" value="Local-01">
+    </div>
+  </div>
+
+  <form id="quizForm">
+    <!-- Q1 -->
+    <div class="question-card" id="card_q1">
+      <div class="question-header">
+        <span class="question-number">Question 1</span>
+        <span class="question-tag">Terminal Command</span>
+      </div>
+      <div class="question-text">
+        Write the complete terminal command to compile <code>program.cpp</code> using <code>g++</code> and output an executable binary named <code>app</code>!
+      </div>
+      <input type="text" id="compileCmd" placeholder="Type terminal command here..." value="g++ program.cpp -o app">
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint1')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint1">
+        Hint: Use the compiler binary <code>g++</code>, specify the source file, and supply the <code>-o</code> flag followed by the output executable name.
+      </div>
+      <div class="feedback-box" id="feedback_q1"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card" id="card_q2">
+      <div class="question-header">
+        <span class="question-number">Question 2</span>
+        <span class="question-tag">Program Execution</span>
+      </div>
+      <div class="question-text">
+        Once compilation succeeds, what terminal command executes the binary <code>app</code> located in the current folder on Linux / macOS?
+      </div>
+      <input type="text" id="runCmd" placeholder="Type run command here..." value="./app">
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint2')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint2">
+        Hint: In Unix-like shells, local executables require the relative path prefix dot-slash (<code>./</code>).
+      </div>
+      <div class="feedback-box" id="feedback_q2"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card" id="card_q3">
+      <div class="question-header">
+        <span class="question-number">Question 3</span>
+        <span class="question-tag">Compiler Flags</span>
+      </div>
+      <div class="question-text">
+        Which recommended <code>g++</code> flag turns on all standard compiler warnings so potential bugs and mistakes are caught early?
+      </div>
+      <input type="text" id="warningFlag" placeholder="e.g. -W..." value="-Wall">
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint3')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint3">
+        Hint: Short for "Warnings All", starts with a capital 'W'.
+      </div>
+      <div class="feedback-box" id="feedback_q3"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card" id="card_q4">
+      <div class="question-header">
+        <span class="question-number">Question 4</span>
+        <span class="question-tag">C++ Standards</span>
+      </div>
+      <div class="question-text">
+        Write the compiler flag that instructs <code>g++</code> to compile code using the ISO C++17 standard!
+      </div>
+      <input type="text" id="stdFlag" placeholder="e.g. -std=..." value="-std=c++17">
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint4')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint4">
+        Hint: Format is <code>-std=c++XX</code> where XX is the two-digit year.
+      </div>
+      <div class="feedback-box" id="feedback_q4"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-card" id="card_q5">
+      <div class="question-header">
+        <span class="question-number">Question 5</span>
+        <span class="question-tag">Anatomy of Comments</span>
+      </div>
+      <div class="question-text">
+        Explain the difference in delimiters between <strong>single-line comments</strong> and <strong>multi-line block comments</strong> in C++!
+      </div>
+      <textarea id="commentDifference" placeholder="Explain the symbols used...">The // syntax comments out everything to the end of the line. The /* and */ delimiters wrap multi-line block comments.</textarea>
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint5')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint5">
+        Hint: Mention double slashes and slash-asterisk pairs.
+      </div>
+      <div class="feedback-box" id="feedback_q5"></div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-card" id="card_q6">
+      <div class="question-header">
+        <span class="question-number">Question 6</span>
+        <span class="question-tag">Comment Traps</span>
+      </div>
+      <div class="question-text">
+        Can block comments in C++ be nested like <code>/* outer /* inner */ still comment? */</code>? What happens if you try?
+      </div>
+      <textarea id="nestedComments" placeholder="Explain if nesting works and why...">No, block comments cannot be nested because the first */ closing tag immediately ends the comment. The trailing */ triggers a compilation syntax error.</textarea>
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint6')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint6">
+        Hint: Which closing tag does the compiler encounter first?
+      </div>
+      <div class="feedback-box" id="feedback_q6"></div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-card" id="card_q7">
+      <div class="question-header">
+        <span class="question-number">Question 7</span>
+        <span class="question-tag">Preprocessor</span>
+      </div>
+      <div class="question-text">
+        At what compilation stage are C++ comments stripped out? Do comments increase the size of the compiled binary?
+      </div>
+      <textarea id="preprocessorRole" placeholder="Explain preprocessor behavior...">Comments are stripped out during the Preprocessor stage and replaced with whitespace. They do not increase binary file size.</textarea>
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint7')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint7">
+        Hint: Remember the 4 stages (Preprocessor, Compiler, Assembler, Linker).
+      </div>
+      <div class="feedback-box" id="feedback_q7"></div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question-card" id="card_q8">
+      <div class="question-header">
+        <span class="question-number">Question 8</span>
+        <span class="question-tag">Workflow Chaining</span>
+      </div>
+      <div class="question-text">
+        Write a single-line terminal command that compiles <code>program.cpp</code> into <code>app</code> and immediately runs it ONLY IF the compilation succeeded!
+      </div>
+      <input type="text" id="chainedCmd" placeholder="One-line chained command..." value="g++ program.cpp -Wall -o app && ./app">
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint8')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint8">
+        Hint: Use the logical operator <code>&&</code> between the compilation command and the execution command.
+      </div>
+      <div class="feedback-box" id="feedback_q8"></div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-card" id="card_q9">
+      <div class="question-header">
+        <span class="question-number">Question 9</span>
+        <span class="question-tag">Function Documentation</span>
+      </div>
+      <div class="question-text">
+        Provide an example of clean documentation comments (Doxygen style) placed above a simple math function!
+      </div>
+      <textarea id="docCommentExample" rows="4" placeholder="Write documentation comment...">/**
+ * @brief Calculates the area of a rectangle.
+ * @param length Length of the rectangle in meters.
+ * @param width Width of the rectangle in meters.
+ * @return Area in square meters.
+ */</textarea>
+      <button type="button" class="hint-toggle" onclick="toggleHint('hint9')">💡 Need a hint?</button>
+      <div class="hint-content" id="hint9">
+        Hint: Typical industry format uses <code>/** ... */</code> with <code>@brief</code>, <code>@param</code>, and <code>@return</code>.
+      </div>
+      <div class="feedback-box" id="feedback_q9"></div>
+    </div>
+  </form>
+
+  <div class="actions-bar">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <button type="button" class="btn btn-primary" onclick="checkWork()">🔍 Check My Understanding</button>
+      <button type="button" class="btn btn-success" onclick="downloadAnswersJson()">💾 Download answers.json</button>
+    </div>
+    <button type="button" class="btn btn-secondary" onclick="resetForm()">🔄 Reset</button>
+  </div>
+
+  <div id="evalReport">
+    <div class="report-header">
+      <h2 style="color: #38bdf8; font-size: 20px; margin-bottom: 4px;">📊 Concept Comprehension Summary</h2>
+      <p style="color: #94a3b8; font-size: 14px;">Self-paced assessment feedback (Zero pressure, formative learning feedback).</p>
+    </div>
+    <div id="reportSummary" style="font-size: 15px; margin-bottom: 16px; color: #f1f5f9; font-weight: 500;"></div>
+    <div class="pill-group" id="reportCategories"></div>
+    <div id="reportTips" style="margin-top: 16px; padding: 14px; background: #090d16; border-radius: 8px; font-size: 14px;"></div>
+  </div>
+</div>
+
+<script>
+  function toggleHint(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function getFormData() {
+    return {
+      studentName: document.getElementById('studentName').value.trim(),
+      studentId: document.getElementById('studentId').value.trim(),
+      compileCmd: document.getElementById('compileCmd').value.trim(),
+      runCmd: document.getElementById('runCmd').value.trim(),
+      warningFlag: document.getElementById('warningFlag').value.trim(),
+      stdFlag: document.getElementById('stdFlag').value.trim(),
+      commentDifference: document.getElementById('commentDifference').value.trim(),
+      nestedComments: document.getElementById('nestedComments').value.trim(),
+      preprocessorRole: document.getElementById('preprocessorRole').value.trim(),
+      chainedCmd: document.getElementById('chainedCmd').value.trim(),
+      docCommentExample: document.getElementById('docCommentExample').value.trim(),
+      submittedAt: new Date().toISOString()
+    };
+  }
+
+  function checkWork() {
+    const data = getFormData();
+    let masteredCount = 0;
+    const totalCount = 9;
+
+    function evaluate(id, isMastered, feedbackGood, feedbackImprove) {
+      const box = document.getElementById(id);
+      box.style.display = 'block';
+      if (isMastered) {
+        masteredCount++;
+        box.className = 'feedback-box understood';
+        box.innerHTML = '<strong>✅ Solid Understanding:</strong> ' + feedbackGood;
+      } else {
+        box.className = 'feedback-box needs-practice';
+        box.innerHTML = '<strong>💡 Tip:</strong> ' + feedbackImprove;
+      }
+    }
+
+    evaluate('feedback_q1',
+      data.compileCmd.includes('g++') && data.compileCmd.includes('-o'),
+      'Accurate usage of g++ with output -o flag!',
+      'Ensure you include "g++", the source file, and "-o <name>".'
+    );
+
+    evaluate('feedback_q2',
+      data.runCmd.includes('./'),
+      'Correct! Relative path prefix ./ tells the shell where to look.',
+      'Remember Unix shells need ./ before the binary name to run local files.'
+    );
+
+    evaluate('feedback_q3',
+      data.warningFlag.includes('-Wall'),
+      '-Wall is the gold standard for catching common programmer mistakes.',
+      'Use -Wall to enable all standard warnings.'
+    );
+
+    evaluate('feedback_q4',
+      data.stdFlag.toLowerCase().includes('c++17'),
+      '-std=c++17 enables modern ISO language capabilities.',
+      'Use -std=c++17 to enforce C++17 standards.'
+    );
+
+    evaluate('feedback_q5',
+      data.commentDifference.includes('//') && (data.commentDifference.includes('/*') || data.commentDifference.includes('*/')),
+      'Spot-on distinction between line and block delimiters.',
+      'Highlight // for single-line and /* ... */ for blocks.'
+    );
+
+    evaluate('feedback_q6',
+      data.nestedComments.toLowerCase().includes('no') || data.nestedComments.toLowerCase().includes('cannot') || data.nestedComments.toLowerCase().includes('error'),
+      'Great! Block comments cannot nest because the first */ terminates the block.',
+      'Remember that block comments cannot nest in C++.'
+    );
+
+    evaluate('feedback_q7',
+      data.preprocessorRole.toLowerCase().includes('preprocessor') || data.preprocessorRole.toLowerCase().includes('strip'),
+      'Exactly! Preprocessor removes all comments before code reaches the compiler.',
+      'Remember the Preprocessor strips comments so binary size is unaffected.'
+    );
+
+    evaluate('feedback_q8',
+      data.chainedCmd.includes('&&'),
+      'Clean chaining with && prevents executing failed builds.',
+      'Use && between compile and run commands.'
+    );
+
+    evaluate('feedback_q9',
+      data.docCommentExample.includes('/**') || data.docCommentExample.includes('@'),
+      'Well-structured documentation format.',
+      'Try using /** ... */ with @brief or @param tags.'
+    );
+
+    const report = document.getElementById('evalReport');
+    report.style.display = 'block';
+    document.getElementById('reportSummary').innerText =
+      `Identified strong understanding in ${masteredCount} of ${totalCount} conceptual checkpoints.`;
+    report.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function downloadAnswersJson() {
+    const data = getFormData();
+    const jsonStr = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'answers.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function resetForm() {
+    if (confirm('Reset all fields to default values?')) {
+      document.getElementById('quizForm').reset();
+      document.getElementById('evalReport').style.display = 'none';
+      document.querySelectorAll('.feedback-box').forEach(el => el.style.display = 'none');
+    }
+  }
+</script>
+</body>
+</html>

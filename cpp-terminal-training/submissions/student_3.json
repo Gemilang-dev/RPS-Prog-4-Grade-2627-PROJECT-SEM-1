@@ -1,0 +1,14 @@
+{
+  "studentName": "Emily Watson",
+  "studentId": "CS-10-04",
+  "compileCmd": "clang++ program.cpp -Wall -Wextra -std=c++17 -o app",
+  "runCmd": "./app",
+  "warningFlag": "-Wall -Wextra",
+  "stdFlag": "-std=c++17",
+  "commentDifference": "// is an inline single-line comment, while /* */ spans across multiple lines.",
+  "nestedComments": "Block comments cannot nest because the inner */ closes the outer block prematurely.",
+  "preprocessorRole": "The preprocessor strips all comments before compiling, keeping machine code clean.",
+  "chainedCmd": "g++ program.cpp -Wall -std=c++17 -o app && ./app",
+  "docCommentExample": "/**\n * @brief Validates user authorization.\n * @param userId Unique user ID.\n * @return True if permitted.\n */",
+  "submittedAt": "2026-10-25T10:30:00Z"
+}
